@@ -1,8 +1,9 @@
+import { CharacterClass } from "./CharacterClass";
+
 export class Character {
   id: number;
   name: string;
-  className: string;
-  classImagePath: string;
+  characterClass: CharacterClass;
   completedDailies: Array<string>;
   completedWeeklies: Array<string>;
   isFavorite: boolean;
@@ -10,16 +11,14 @@ export class Character {
   constructor(
     id: number,
     name: string,
-    className: string,
-    classImagePath: string,
+    characterClass: CharacterClass,
     isFavorite = false,
     completedDailies = [],
     completedWeeklies = []
   ) {
     this.id = id;
     this.name = name;
-    this.className = className;
-    this.classImagePath = classImagePath;
+    this.characterClass = characterClass;
     this.completedDailies = completedDailies;
     this.completedWeeklies = completedWeeklies;
     this.isFavorite = isFavorite;
