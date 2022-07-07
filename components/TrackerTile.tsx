@@ -1,9 +1,23 @@
-import { View, StyleSheet, Image, Text, Animated } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  Animated,
+  ImageProps,
+} from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+import { ImageSource } from "react-native-vector-icons/Icon";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-function TrackerTile(props) {
-  const leftActions = (progress, dragX) => {
+function TrackerTile(props: {
+  imageSource: ImageSource;
+  activityName: string;
+}) {
+  const leftActions = (
+    _progress: Animated.AnimatedInterpolation,
+    dragX: Animated.AnimatedInterpolation
+  ) => {
     const trans = dragX.interpolate({
       inputRange: [0, 25, 50, 75, 100, 101],
       outputRange: [-75, -50, -25, 0, 0, 1],
@@ -37,10 +51,11 @@ export default TrackerTile;
 const styles = StyleSheet.create({
   tileContainer: {
     flexDirection: "row",
+    backgroundColor: "#fff",
     width: "100%",
-    height: 85,
-    marginVertical: 8,
-    marginHorizontal: 8,
+    height: 100,
+    marginTop: 8,
+    marginLeft: 8,
   },
   activityImage: {
     resizeMode: "contain",
@@ -64,6 +79,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flex: 1,
     backgroundColor: "#388e3c",
+    marginTop: 8,
     alignItems: "center",
   },
 });

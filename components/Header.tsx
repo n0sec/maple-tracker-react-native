@@ -1,7 +1,11 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
-function Header(props) {
+function Header(props: {
+  rightIcons: { name: string; onPress: () => void }[];
+  leftMenuEnabled: boolean;
+  title: string;
+}) {
   return (
     <View style={styles.headerContainer}>
       <StatusBar
@@ -10,14 +14,14 @@ function Header(props) {
         backgroundColor={"#f97316"}
       />
       {props.leftMenuEnabled && (
-        <MaterialIcons name="menu" size={28} style={styles.menuIcon} />
+        <Icon name="menu" size={28} style={styles.menuIcon} />
       )}
       <View>
         <Text style={styles.headerTitle}>{props.title}</Text>
       </View>
       <View style={styles.iconsContainerRight}>
         {props.rightIcons.map((icon, index) => (
-          <MaterialIcons
+          <Icon
             name={icon.name}
             onPress={icon.onPress}
             size={28}
