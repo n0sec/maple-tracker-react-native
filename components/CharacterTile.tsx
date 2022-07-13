@@ -5,12 +5,13 @@ import {
   Image,
   Pressable,
   Animated,
+  ImageSourcePropType,
 } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 function CharacterTile(props: {
-  imageSource: string;
+  imageSource: ImageSourcePropType;
   characterName: string;
   classColor: string;
   className: string;
@@ -43,14 +44,11 @@ function CharacterTile(props: {
   return (
     <Swipeable renderRightActions={rightActions}>
       <Pressable
-        android_ripple={{ color: "#ddd" }}
+        android_ripple={{ color: props.classColor }}
         style={({ pressed }) => pressed && styles.pressedItem}
       >
         <View style={styles.tileContainer}>
-          <Image
-            source={{ uri: props.imageSource }}
-            style={styles.classImage}
-          />
+          <Image source={props.imageSource} style={styles.classImage} />
           <View style={styles.charInfoContainer}>
             {/* Character Name & Class Name */}
             <Text style={styles.charName}>{props.characterName}</Text>
@@ -94,7 +92,7 @@ const styles = StyleSheet.create({
   },
   pressedItem: {
     // opacity: "rgba(0, 0, 0, 0.5)",
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
   },
   rightAction: {
     marginHorizontal: 8,

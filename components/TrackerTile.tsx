@@ -5,13 +5,13 @@ import {
   Text,
   Animated,
   ImageProps,
+  ImageSourcePropType,
 } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import { ImageSource } from "react-native-vector-icons/Icon";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 function TrackerTile(props: {
-  imageSource: ImageSource;
+  imageSource: ImageSourcePropType;
   activityName: string;
 }) {
   const leftActions = (
